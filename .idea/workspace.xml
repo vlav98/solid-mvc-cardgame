@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bce0ba22-f18d-4d5c-bf51-9deddd7f0807" name="Changes" comment=":tada: Initialize Card Game Model">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Solid-MVC-CardGame.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Hand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/PlayingCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Rank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Suit.java" afterDir="false" />
+    <list default="true" id="bce0ba22-f18d-4d5c-bf51-9deddd7f0807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/controller/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/games/Games.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/oc/cardgame/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oc/cardgame/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oc/cardgame/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oc/cardgame/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +60,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708446884653</updated>
-      <workItem from="1708446885764" duration="5759000" />
+      <workItem from="1708446885764" duration="11598000" />
     </task>
+    <task id="LOCAL-00001" summary=":tada: Initialize Card Game Model">
+      <option name="closed" value="true" />
+      <created>1708461577131</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708461577131</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
