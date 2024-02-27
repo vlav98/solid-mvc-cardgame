@@ -1,31 +1,33 @@
 package com.oc.cardgame.controller;
 
-import com.oc.cardgame.model.Deck;
-import com.oc.cardgame.model.Player;
-import com.oc.cardgame.model.PlayingCard;
-import com.oc.cardgame.view.View;
+import com.oc.cardgame.games.GameEvaluator;
+import com.oc.cardgame.model.*;
+import com.oc.cardgame.view.GameViewable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
+
     enum GameState {
         AddingPlayers, CardsDealt, WinnerRevealed;
     }
 
     Deck deck;
-    List<Player> players;
-    Player winner;
-    View view;
+    List<IPlayer> players;
+    IPlayer winner;
+    GameViewable view;
     GameState gameState;
+    GameEvaluator evaluator;
 
-    public GameController(Deck deck, View view) {
+    public GameController(Deck deck, GameViewable view, GameEvaluator evaluator) {
         super();
         this.deck = deck;
         this.view = view;
-        this.players = new ArrayList<Player>();
+        this.players = new ArrayList<IPlayer>();
         this.gameState = GameState.AddingPlayers;
         view.setController(this);
+        this.evaluator = evaluator;
     }
 
     public void run() {
@@ -50,7 +52,7 @@ public class GameController {
         if(gameState != GameState.CardsDealt) {
             deck.shuffle();
             int playerIndex = -1;
-            for (Player player: players) {
+            for (IPlayer player: players) {
                 player.addCardToHand(deck.removeTopCard());
                 view.showFaceDownCardForPlayer(playerIndex++, player.getName());
             }
@@ -61,7 +63,7 @@ public class GameController {
 
     public void flipCards() {
         int playerIndex = -1;
-        for (Player player: players) {
+        for (IPlayer player: players) {
             PlayingCard pc = player.getCard(0);
             pc.flip();
             view.showCardForPlayer(playerIndex++, player.getName(), pc.getRank().toString(), pc.getSuit().toString());
@@ -75,38 +77,7 @@ public class GameController {
     }
 
     void evaluateWinner() {
-        Player bestPlayer = null;
-        int bestRank = -1;
-        int bestSuit = -1;
-
-        for (Player player:players) {
-            boolean newBestPlayer = false;
-
-            if (bestPlayer == null) {
-                newBestPlayer = true;
-            } else {
-                PlayingCard pc = player.getCard(0);
-                int thisRank = pc.getRank().value();
-                if (thisRank >= bestRank) {
-                    if (thisRank > bestRank) {
-                        newBestPlayer = true;
-                    } else {
-                        if (pc.getSuit().value() > bestSuit) {
-                            newBestPlayer = true;
-                        }
-                    }
-                }
-            }
-
-            if (newBestPlayer) {
-                bestPlayer = player;
-                PlayingCard pc = player.getCard(0);
-                bestRank = pc.getRank().value();
-                bestSuit = pc.getSuit().value();
-            }
-        }
-
-        winner = bestPlayer;
+        winner = new WinningPlayer(evaluator.evaluateWinner(players));
     }
 
     void displayWinner() {
@@ -114,8 +85,20 @@ public class GameController {
     }
 
     void rebuildDeck() {
-        for (Player player: players) {
+        for (IPlayer player: players) {
             deck.returnCardToDeck(player.removeCard());
+        }
+    }
+
+    void exitGame() {
+        System.exit(0);
+    }
+
+    public void nextAction(String nextChoice) {
+        if("+q".equals(nextChoice)) {
+            exitGame();
+        } else {
+            startGame();
         }
     }
 }
