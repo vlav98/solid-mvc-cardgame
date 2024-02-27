@@ -5,7 +5,7 @@ import com.oc.cardgame.controller.GameController;
 
 import java.util.Scanner;
 
-public class View {
+public class CommandLineView implements GameViewable {
     GameController controller;
     Scanner keyboard = new Scanner(System.in);
 
@@ -30,9 +30,8 @@ public class View {
     }
 
     public void promptForNewGame() {
-        System.out.println("Press enter to deal again.");
-        keyboard.nextLine();
-        controller.startGame();
+        System.out.println("Press enter to deal again or +q to exit.");
+        controller.nextAction(keyboard.nextLine());
     }
 
     public void showWinner(String name) {

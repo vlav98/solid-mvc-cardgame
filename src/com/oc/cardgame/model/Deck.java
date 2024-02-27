@@ -2,20 +2,8 @@ package com.oc.cardgame.model;
 
 import java.util.*;
 
-public class Deck {
-    private List<PlayingCard> cards;
-
-    public Deck() {
-        cards = new ArrayList<PlayingCard>();
-        for(Rank rank: Rank.values()) {
-            for (Suit suit: Suit.values()) {
-                System.out.println("Creating card [" + rank + "][" + suit + "]");
-                cards.add(new PlayingCard(rank, suit));
-            }
-        }
-        
-        shuffle();
-    }
+public abstract class Deck {
+    protected List<PlayingCard> cards;
 
     public void shuffle() {
         Random random = new Random();

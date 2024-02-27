@@ -1,6 +1,7 @@
 package com.oc.cardgame.model;
 
 public enum Suit {
+    NONE (0),
     DIAMOND (1),
     HEARTS (1),
     SPADES (3),
