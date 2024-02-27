@@ -1,4 +1,9 @@
-package com.oc.cardgame.model;
+package com.oc.cardgame;
+
+import com.oc.cardgame.model.Deck;
+import com.oc.cardgame.model.NormalDeck;
+import com.oc.cardgame.model.SmallDeck;
+import com.oc.cardgame.model.TestDeck;
 
 public class DeckFactory {
     public enum DeckType {
